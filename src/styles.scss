@@ -1,0 +1,120 @@
+/* ==========================================================================
+   DESIGN SYSTEM — TOKENS E ESTILOS GLOBAIS
+   ========================================================================== */
+
+/* 🌙 TEMA ESCURO (Padrão) */
+:root {
+  /* Cores de Fundo */
+  --bg-primary: #0b111e;
+  --bg-surface: #131b2e;
+  --bg-surface-hover: #1a253e;
+
+  /* Bordas */
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(0, 210, 255, 0.4);
+
+  /* Tipografia / Cores de Texto */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  /* Destaque (Ciano Elétrico) */
+  --accent: #00d2ff;
+  --accent-hover: #00b4db;
+  --accent-glow: rgba(0, 210, 255, 0.2);
+  --accent-badge-bg: rgba(0, 210, 255, 0.1);
+
+  /* Fontes */
+  --font-title: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Sombras e Bordas Arredondadas */
+  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Transição Suave para Troca de Tema */
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ☀️ TEMA CLARO (Ativado quando [data-theme="light"] é aplicado) */
+[data-theme="light"] {
+  --bg-primary: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f1f5f9;
+
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 160, 200, 0.4);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  --accent: #0099cc;
+  --accent-hover: #007799;
+  --accent-glow: rgba(0, 153, 204, 0.15);
+  --accent-badge-bg: rgba(0, 153, 204, 0.1);
+
+  --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.06);
+}
+
+/* ==========================================================================
+   RESET E CONFIGURAÇÃO GLOBAL
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Estilos de Título */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: var(--transition);
+
+  &:hover {
+    color: var(--accent-hover);
+  }
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: var(--transition);
+}
+
+/* Layout container padrão */
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
