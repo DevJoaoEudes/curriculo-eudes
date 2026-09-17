@@ -1,59 +1,66 @@
-# CurriculoEudes
+# ⚡ Currículo Digital Interativo — João Eudes
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.8.
+> **Projeto desenvolvido para a trilha de preparação do Hackathon Proenergia Summit 2026.**  
+> Uma aplicação web moderna, reativa e de alta performance construída com as novidades do **Angular 22**, TypeScript e SCSS.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Demonstração das Funcionalidades
 
-```bash
-ng serve
-```
+- 🌓 **Suporte a Dark e Light Mode:** Alternância dinâmica de temas em tempo de execução via CSS Custom Properties.
+- ⚡ **Reatividade com Angular Signals:** Gerenciamento de estado de filtros com `signal()` e derivação de dados com `computed()`, eliminando complexidade desnecessária de subscriptions.
+- 🎯 **Filtro Qualitativo de Habilidades:** Badges de maturidade (*Domínio*, *Uso Diário*, *Praticando*) para Python, SQL, Angular, Java, Docker e Git, sem falsas porcentagens.
+- 📍 **Linha do Tempo Vertical:** Seção de trajetória e projetos práticos com design tokens, marcadores luminosos e conexões semânticas.
+- 🛡️ **Segurança e Acessibilidade:** Links externos protegidos com `rel="noopener noreferrer"`, contrastes testados e navegação por teclado.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🛠️ Tecnologias Utilizadas
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Frontend:** Angular 22 (Standalone Components)
+- **Linguagem:** TypeScript (Tipagem estrita, Interfaces & Union Types)
+- **Estilização:** SCSS estruturado com Design Tokens e CSS Grid/Flexbox
+- **Reatividade:** Angular Signals (`signal`, `computed`, `effect`)
+- **Controle de Fluxo:** Nova sintaxe nativa `@for`, `@empty`, `@if`
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 💻 Como Rodar o Projeto Localmente
 
-```bash
-ng generate --help
-```
+### Pré-requisitos
+- Node.js (versão 20 ou superior recomendada)
+- npm
 
-## Building
+### Passo a passo
 
-To build the project run:
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/DevJoaoEudes/curriculo-eudes.git
+   cd curriculo-eudes
+   ```
 
-```bash
-ng build
-```
+2. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+3. **Inicie o servidor de desenvolvimento:**
+   ```bash
+   npm start
+   ```
 
-## Running unit tests
+4. **Acesse no navegador:**
+   Abra [http://localhost:4200](http://localhost:4200)
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+## 👤 Autor
 
-## Running end-to-end tests
+**João Eudes** — *Desenvolvedor Full Stack*
 
-For end-to-end (e2e) testing, run:
+- 💼 **LinkedIn:** [linkedin.com/in/joao-eudes-914699414](https://www.linkedin.com/in/joao-eudes-914699414)
+- 🐙 **GitHub:** [github.com/DevJoaoEudes](https://github.com/DevJoaoEudes)
+- ✉️ **E-mail:** [eudesjoao411@gmail.com](mailto:eudesjoao411@gmail.com)
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+*Desenvolvido durante a trilha de preparação do Hackathon Proenergia Summit 2026.*
