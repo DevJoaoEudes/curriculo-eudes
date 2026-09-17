@@ -3,6 +3,8 @@
 > **Projeto desenvolvido para a trilha de preparação do Hackathon Proenergia Summit 2026.**  
 > Uma aplicação web moderna, reativa e de alta performance construída com as novidades do **Angular 22**, TypeScript e SCSS.
 
+🌐 **Acesse online:** [https://devjoaoeudes.github.io/curriculo-eudes/](https://devjoaoeudes.github.io/curriculo-eudes/)
+
 ---
 
 ## 🚀 Demonstração das Funcionalidades
