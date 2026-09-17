@@ -1,0 +1,55 @@
+<section id="skills" class="skills-section">
+  <div class="container">
+    <!-- Cabeçalho da Seção -->
+    <div class="section-header">
+      <span class="section-tag">Stack & Ferramentas</span>
+      <h2 class="section-title">Habilidades Técnicas</h2>
+      <p class="section-description">
+        Foco em desenvolvimento Full Stack de alta performance, aliando robustez no backend à experiência fluida e moderna no frontend.
+      </p>
+    </div>
+
+    <!-- Filtro Interativo por Categorias -->
+    <div class="filters-container" role="toolbar" aria-label="Filtros de habilidades">
+      @for (cat of categories; track cat) {
+        <button
+          type="button"
+          class="filter-btn"
+          [class.active]="selectedCategory() === cat"
+          [attr.aria-pressed]="selectedCategory() === cat"
+          (click)="setCategory(cat)">
+          {{ cat }}
+        </button>
+      }
+    </div>
+
+    <!-- Grid de Habilidades Filtradas -->
+    <div class="skills-grid">
+      @for (skill of filteredSkills(); track skill.id) {
+        <article class="skill-card">
+          <div class="card-header">
+            <h3 class="skill-name">{{ skill.name }}</h3>
+            <!-- Badge Qualitativa de Proficiência -->
+            <span 
+              class="level-badge"
+              [class.badge-expert]="skill.level === 'Domínio'"
+              [class.badge-daily]="skill.level === 'Uso Diário'"
+              [class.badge-learning]="skill.level === 'Praticando'">
+              {{ skill.level }}
+            </span>
+          </div>
+
+          <span class="skill-category">{{ skill.category }}</span>
+
+          @if (skill.description) {
+            <p class="skill-description">{{ skill.description }}</p>
+          }
+        </article>
+      } @empty {
+        <div class="empty-state">
+          <p>Nenhuma habilidade encontrada para a categoria selecionada.</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

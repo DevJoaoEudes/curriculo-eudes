@@ -1,9 +1,10 @@
 import { Component, signal, effect } from '@angular/core';
 import { HeroComponent } from './components/hero/hero.component';
+import { SkillsComponent } from './components/skills/skills.component';
 
 @Component({
   selector: 'app-root',
-  imports: [HeroComponent],
+  imports: [HeroComponent, SkillsComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
