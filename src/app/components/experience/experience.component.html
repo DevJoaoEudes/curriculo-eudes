@@ -1,0 +1,48 @@
+<section id="experiencia" class="experience-section">
+  <div class="container">
+    <!-- Cabeçalho da Seção -->
+    <div class="section-header">
+      <span class="section-tag">Trajetória & Prática</span>
+      <h2 class="section-title">Jornada Técnica</h2>
+      <p class="section-description">
+        Marcos práticos, participação em desafios do ecossistema de inovação e desenvolvimento contínuo de projetos modernos.
+      </p>
+    </div>
+
+    <!-- Linha do Tempo Vertical -->
+    <div class="timeline">
+      @for (item of experiences(); track item.id) {
+        <div class="timeline-item">
+          <!-- Marcador / Ponto Conector -->
+          <div class="timeline-marker" aria-hidden="true">
+            <span class="marker-dot"></span>
+          </div>
+
+          <!-- Conteúdo do Card da Timeline -->
+          <article class="timeline-card">
+            <header class="card-header">
+              <div class="title-group">
+                <span class="type-badge" [class]="'badge-' + item.type.toLowerCase()">
+                  {{ item.type }}
+                </span>
+                <h3 class="role-title">{{ item.role }}</h3>
+                <h4 class="organization-name">{{ item.organization }}</h4>
+              </div>
+
+              <time class="period-badge">{{ item.period }}</time>
+            </header>
+
+            <p class="description">{{ item.description }}</p>
+
+            <!-- Tags das Tecnologias Usadas -->
+            <div class="tech-stack">
+              @for (tech of item.technologies; track tech) {
+                <span class="tech-tag">{{ tech }}</span>
+              }
+            </div>
+          </article>
+        </div>
+      }
+    </div>
+  </div>
+</section>
