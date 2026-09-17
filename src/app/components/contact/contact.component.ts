@@ -23,24 +23,24 @@ export class ContactComponent {
     {
       name: 'E-mail',
       label: 'Enviar mensagem direta',
-      value: 'joaoeudes.dev@gmail.com',
-      url: 'mailto:joaoeudes.dev@gmail.com',
+      value: 'eudesjoao411@gmail.com',
+      url: 'mailto:eudesjoao411@gmail.com',
       icon: 'email',
       isExternal: false
     },
     {
       name: 'LinkedIn',
       label: 'Conectar na rede profissional',
-      value: 'linkedin.com/in/joaoeudes',
-      url: 'https://linkedin.com',
+      value: 'linkedin.com/in/joao-eudes-914699414',
+      url: 'https://www.linkedin.com/in/joao-eudes-914699414',
       icon: 'linkedin',
       isExternal: true
     },
     {
       name: 'GitHub',
       label: 'Explorar repositórios e código',
-      value: 'github.com/joaoeudes7',
-      url: 'https://github.com',
+      value: 'github.com/DevJoaoEudes',
+      url: 'https://github.com/DevJoaoEudes',
       icon: 'github',
       isExternal: true
     }
