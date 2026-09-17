@@ -2,10 +2,11 @@ import { Component, signal, effect } from '@angular/core';
 import { HeroComponent } from './components/hero/hero.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ExperienceComponent } from './components/experience/experience.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @Component({
   selector: 'app-root',
-  imports: [HeroComponent, SkillsComponent, ExperienceComponent],
+  imports: [HeroComponent, SkillsComponent, ExperienceComponent, ContactComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
