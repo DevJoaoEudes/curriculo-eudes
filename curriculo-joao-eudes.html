@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Currículo - João Eudes | Analista de Suporte Júnior · Agendamento</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    @page {
+      size: A4;
+      margin: 10mm 13mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      line-height: 1.4;
+      font-size: 9pt;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .resume-container {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Cabeçalho */
+    header {
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 8px;
+      margin-bottom: 11px;
+    }
+
+    .name-title-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 6px;
+    }
+
+    h1.candidate-name {
+      font-size: 20pt;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
+
+    .target-role {
+      font-size: 10.5pt;
+      font-weight: 600;
+      color: #0284c7;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      font-size: 8.5pt;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .contact-item a {
+      color: #0f172a;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Seções */
+    section {
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 2px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 12px;
+      background: #0284c7;
+      border-radius: 2px;
+    }
+
+    p.summary-text {
+      color: #334155;
+      font-size: 8.8pt;
+      text-align: justify;
+      line-height: 1.45;
+    }
+
+    /* Grid de Habilidades */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 12px;
+    }
+
+    .skill-category {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 5px 9px;
+    }
+
+    .skill-category-title {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #0284c7;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+    }
+
+    .skill-category-items {
+      font-size: 8.2pt;
+      color: #334155;
+      line-height: 1.35;
+    }
+
+    /* Itens de Experiência / Projetos */
+    .timeline-entry {
+      margin-bottom: 9px;
+    }
+
+    .timeline-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .entry-title {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .entry-org {
+      font-size: 8.8pt;
+      font-weight: 600;
+      color: #0284c7;
+    }
+
+    .entry-period {
+      font-size: 8pt;
+      font-weight: 600;
+      color: #64748b;
+      background: #f1f5f9;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .bullet-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 3px;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 12px;
+      font-size: 8.5pt;
+      color: #334155;
+      margin-bottom: 2px;
+      line-height: 1.35;
+    }
+
+    .bullet-list li::before {
+      content: '•';
+      position: absolute;
+      left: 2px;
+      color: #0284c7;
+      font-weight: bold;
+    }
+
+    /* Destaques / Diferenciais */
+    .highlights-box {
+      background: #f0f9ff;
+      border-left: 3px solid #0284c7;
+      padding: 5px 9px;
+      border-radius: 0 4px 4px 0;
+      margin-top: 5px;
+    }
+
+    .highlights-box p {
+      font-size: 8.3pt;
+      color: #0369a1;
+      line-height: 1.35;
+    }
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 12px;
+    }
+
+    .education-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 6px 9px;
+    }
+
+    .education-degree {
+      font-weight: 700;
+      font-size: 8.8pt;
+      color: #0f172a;
+    }
+
+    .education-school {
+      font-size: 8.2pt;
+      color: #0284c7;
+      font-weight: 500;
+    }
+
+    .education-status {
+      font-size: 7.8pt;
+      color: #64748b;
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="resume-container">
+    <!-- Cabeçalho com Contatos Reais e Redes -->
+    <header>
+      <div class="name-title-box">
+        <h1 class="candidate-name">João Eudes</h1>
+        <span class="target-role">Analista de Suporte Júnior · Agendamento</span>
+      </div>
+
+      <div class="contact-bar">
+        <span class="contact-item">
+          📱 <strong>(85) 99982-1888</strong>
+        </span>
+        <span class="contact-item">
+          ✉️ <a href="mailto:eudesjoao411@gmail.com">eudesjoao411@gmail.com</a>
+        </span>
+        <span class="contact-item">
+          📍 Fortaleza - CE · <strong>100% Home Office (Escala 6x1 · 08:00 às 15:40)</strong>
+        </span>
+        <span class="contact-item">
+          💼 <a href="https://www.linkedin.com/in/joao-eudes-914699414">linkedin.com/in/joao-eudes-914699414</a>
+        </span>
+        <span class="contact-item">
+          🐙 <a href="https://github.com/DevJoaoEudes">github.com/DevJoaoEudes</a>
+        </span>
+        <span class="contact-item">
+          🌐 <a href="https://devjoaoeudes.github.io/curriculo-eudes/">Portfólio: devjoaoeudes.github.io</a>
+        </span>
+      </div>
+    </header>
+
+    <!-- Resumo Profissional Alinhado com 2 Anos em PPCP e Vaga de Agendamento -->
+    <section>
+      <h2 class="section-title">Resumo Profissional</h2>
+      <p class="summary-text">
+        Profissional com <strong>2 anos de experiência em PPCP (Planejamento, Programação e Controle da Produção) na Paty Lady</strong> e estudante de Engenharia de Software. Vivência consolidada em organização de cronogramas, distribuição diária de demandas por prioridade, controle rigoroso de prazos e alimentação de sistemas ERP. Amplo domínio de <strong>Excel Intermediário</strong> (planilhas de controle, filtros, fórmulas e relatórios de acompanhamento) e facilidade em comunicação ativa/receptiva multicanal (WhatsApp, telefone e e-mail). Rápida capacidade de aprendizagem, boa digitação e disciplina para atuação imediata <strong>100% Home Office</strong> no horário das 08:00 às 15:40 em escala 6x1.
+      </p>
+    </section>
+
+    <!-- Competências Chave (Mapeadas exatamente para os Requisitos da Vaga) -->
+    <section>
+      <h2 class="section-title">Competências & Habilidades Chave</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <div class="skill-category-title">Agendamento & Gestão de Rotinas (PPCP)</div>
+          <div class="skill-category-items">
+            Organização diária de agendas e ordens de serviço por região, disponibilidade e prioridade; reprogramação ágil de rotinas e acompanhamento para redução de faltas e atrasos.
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-category-title">Ferramentas & Produtividade</div>
+          <div class="skill-category-items">
+            <strong>Excel Intermediário</strong> (planilhas de controle, fórmulas, filtros e organização de dados); <strong>Outlook</strong> corporativo; facilidade com sistemas <strong>ERP, CRM</strong> e plataformas internas.
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-category-title">Atendimento & Comunicação Multicanal</div>
+          <div class="skill-category-items">
+            Comunicação clara, empática e profissional; atendimento ativo e receptivo por telefone, WhatsApp e e-mail; alinhamento diário entre clientes, equipes de campo e supervisão.
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-category-title">Perfil Operacional & Suporte</div>
+          <div class="skill-category-items">
+            Excelente velocidade e precisão de digitação; registro detalhado de atendimentos e status em sistema; suporte a técnicos em rota e gestão de atendimentos emergenciais.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experiência Profissional Comprovada -->
+    <section>
+      <h2 class="section-title">Experiência Profissional & Trajetória</h2>
+
+      <!-- Experiência Real de 2 Anos na Paty Lady como PPCP -->
+      <div class="timeline-entry">
+        <div class="entry-header">
+          <span class="entry-title">Analista / Assistente de PPCP (Planejamento, Programação e Controle da Produção)</span>
+          <span class="entry-period">2024 – Presente (2 anos)</span>
+        </div>
+        <div class="entry-org">Paty Lady Confecções</div>
+        <ul class="bullet-list">
+          <li><strong>Programação e Distribuição Diária:</strong> Responsável pelo planejamento e agendamento de fluxos operacionais, distribuindo demandas conforme capacidade, prazo e prioridade.</li>
+          <li><strong>Controle e Gestão de Status:</strong> Acompanhamento diário do andamento dos processos, identificando gargalos ou atrasos e reprogramando cronogramas com agilidade.</li>
+          <li><strong>Sistemas ERP e Excel:</strong> Alimentação e atualização contínua de dados no sistema ERP corporativo e gestão de planilhas complexas em Excel para controle e conferência.</li>
+          <li><strong>Comunicação e Alinhamento Operacional:</strong> Intermediação constante com equipes internas e externas para confirmação de prazos, orientações e resolução de imprevistos.</li>
+        </ul>
+      </div>
+
+      <!-- Projetos Práticos de TI e Hackathon -->
+      <div class="timeline-entry">
+        <div class="entry-header">
+          <span class="entry-title">Desenvolvimento Prático de Software & Hackathon Proenergia Summit 2026</span>
+          <span class="entry-period">2025 – 2026</span>
+        </div>
+        <div class="entry-org">Projetos de Tecnologia & Engenharia de Software</div>
+        <ul class="bullet-list">
+          <li>Participação ativa em equipe multidisciplinar no <strong>Hackathon Proenergia Summit 2026</strong>, desenvolvendo soluções digitais sob prazos curtos e comunicação contínua.</li>
+          <li>Prática com modelagem de dados (SQL, Python), estruturação lógica de processos e desenvolvimento de aplicações web modernas.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Formação Acadêmica & Cursos -->
+    <section>
+      <h2 class="section-title">Formação Acadêmica & Qualificações</h2>
+      <div class="education-grid">
+        <div class="education-item">
+          <div class="education-degree">Bacharelado em Engenharia de Software</div>
+          <div class="education-school">Ensino Superior</div>
+          <div class="education-status">Em andamento · Foco em Lógica, Sistemas de Informação e Processos</div>
+        </div>
+
+        <div class="education-item">
+          <div class="education-degree">Excel Intermediário & Gestão de Dados</div>
+          <div class="education-school">Cursos & Prática Corporativa</div>
+          <div class="education-status">Planilhas dinâmicas, filtros, fórmulas, ERPs e rotinas de controle</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Diferenciais para a Função na Maxtrack -->
+    <section>
+      <div class="highlights-box">
+        <p>
+          <strong>Diferenciais para a Maxtrack:</strong> Experiência prática consolidada de 2 anos com rotinas de agendamento e controle (PPCP); sinergia direta com tecnologia, dados e Internet das Coisas (IoT); boa infraestrutura e conexão estável para atuação 100% Home Office imediata.
+        </p>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>
