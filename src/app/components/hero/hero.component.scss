@@ -1,28 +1,28 @@
 .hero {
-  padding: 5rem 1.5rem 3rem;
+  padding: 3.8rem 1.5rem 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   overflow: hidden;
 
-  /* Efeito de iluminação suave de fundo com o Ciano */
+  /* Efeito de iluminação suave com ciano elétrico */
   &::before {
     content: '';
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 50%;
     transform: translateX(-50%);
-    width: 320px;
-    height: 320px;
-    background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0, 0, 0, 0) 70%);
+    width: 440px;
+    height: 440px;
+    background: radial-gradient(circle, rgba(0, 210, 255, 0.16) 0%, rgba(0, 0, 0, 0) 70%);
     z-index: 0;
     pointer-events: none;
   }
 }
 
 .hero-container {
-  max-width: 800px;
+  max-width: 820px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -32,27 +32,489 @@
   z-index: 1;
 }
 
-/* Badge de Status Disponível */
-.status-badge {
+/* ==========================================================================
+   TOP RETRO GAME STATUS HUD
+   ========================================================================== */
+
+.game-hud-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(11, 17, 30, 0.92);
+  border: 1px solid rgba(0, 243, 255, 0.35);
+  box-shadow: 
+    0 4px 18px rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(0, 243, 255, 0.15),
+    inset 0 0 8px rgba(0, 243, 255, 0.05);
+  padding: 0.35rem 1rem;
+  border-radius: 4px;
+  font-family: var(--font-cyber, 'Chakra Petch'), monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.8px;
+  color: var(--text-secondary);
+  margin-bottom: 1.8rem;
+  backdrop-filter: blur(10px);
+
+  .player-pip {
+    font-family: var(--font-retro, 'Press Start 2P'), monospace;
+    font-size: 0.6rem;
+    color: #00f3ff;
+    background: rgba(0, 243, 255, 0.12);
+    border: 1px solid rgba(0, 243, 255, 0.4);
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+
+  .status-live {
+    color: #10b981;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+    animation: liveBlink 2.2s infinite ease-in-out;
+  }
+
+  .hud-divider {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.7rem;
+  }
+
+  .hud-level {
+    color: #38bdf8;
+    font-weight: 600;
+  }
+
+  .status-text {
+    color: var(--text-primary);
+    font-size: 0.78rem;
+    font-weight: 500;
+  }
+}
+
+@keyframes liveBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ==========================================================================
+   RETRO-FUTURISTIC PIXEL VIEWPORT (CANVAS & CONTROLS)
+   ========================================================================== */
+
+.pixel-viewport {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.2rem;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+
+  &:hover {
+    .canvas-wrapper {
+      border-color: rgba(0, 243, 255, 0.7);
+      box-shadow: 
+        0 12px 35px rgba(0, 0, 0, 0.8),
+        0 0 35px rgba(0, 243, 255, 0.35),
+        inset 0 0 20px rgba(0, 243, 255, 0.18);
+      transform: scale(1.02);
+    }
+  }
+}
+
+/* Halo Neon Traseiro */
+.pixel-halo {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 270px;
+  height: 270px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 243, 255, 0.2) 0%, rgba(0, 243, 255, 0) 70%);
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Moldura Circular com Cantoneiras em Pixel */
+.canvas-wrapper {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(0, 243, 255, 0.4);
+  box-shadow: 
+    0 12px 35px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(0, 243, 255, 0.22),
+    inset 0 0 22px rgba(0, 243, 255, 0.12);
+  background: #020611;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+
+  .pixel-canvas {
+    display: block;
+    width: 240px;
+    height: 240px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  .scanline-crt {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.14) 0px,
+      rgba(0, 0, 0, 0.14) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+    pointer-events: none;
+    border-radius: 50%;
+  }
+
+  /* Cantoneiras HUD Estilo Jogo */
+  .corner-notch {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: #00f3ff;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .corner-tl {
+    top: 14px;
+    left: 14px;
+    border-top: 2px solid #00f3ff;
+    border-left: 2px solid #00f3ff;
+  }
+
+  .corner-tr {
+    top: 14px;
+    right: 14px;
+    border-top: 2px solid #00f3ff;
+    border-right: 2px solid #00f3ff;
+  }
+
+  .corner-bl {
+    bottom: 14px;
+    left: 14px;
+    border-bottom: 2px solid #00f3ff;
+    border-left: 2px solid #00f3ff;
+  }
+
+  .corner-br {
+    bottom: 14px;
+    right: 14px;
+    border-bottom: 2px solid #00f3ff;
+    border-right: 2px solid #00f3ff;
+  }
+}
+
+/* ==========================================================================
+   DECK DE CONTROLE / STATUS RETRO ESTILO JOGO
+   ========================================================================== */
+
+.retro-deck {
+  margin-top: 1.15rem;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  padding: 0.4rem 1rem;
-  border-radius: var(--radius-full);
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-  box-shadow: var(--shadow-card);
+  background: rgba(8, 14, 26, 0.92);
+  border: 1px solid rgba(0, 243, 255, 0.35);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(0, 243, 255, 0.15);
+  border-radius: 6px;
+  padding: 0.45rem 0.75rem;
+  backdrop-filter: blur(12px);
+  z-index: 2;
+  transition: all 0.25s ease;
 
-  .status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #10b981; /* Verde ativo */
-    box-shadow: 0 0 10px #10b981;
-    animation: pulse 2s infinite ease-in-out;
+  &:hover {
+    border-color: rgba(0, 243, 255, 0.6);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.25);
+  }
+
+  .deck-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 220px;
+    text-align: center;
+
+    &.face-mode {
+      gap: 0.2rem;
+
+      .deck-dot {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #00f3ff;
+        box-shadow: 0 0 8px #00f3ff;
+        margin: 0 auto 0.2rem;
+        animation: pulse 1.8s infinite ease-in-out;
+      }
+
+      .deck-title {
+        font-family: var(--font-retro, 'Press Start 2P'), monospace;
+        font-size: 0.62rem;
+        color: #00f3ff;
+        letter-spacing: 0.5px;
+      }
+
+      .deck-sub {
+        font-family: var(--font-cyber, 'Chakra Petch'), monospace;
+        font-size: 0.68rem;
+        color: var(--text-muted);
+        letter-spacing: 0.8px;
+      }
+    }
+
+    &.skill-mode {
+      gap: 0.25rem;
+
+      .deck-top-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+
+        .slot-badge {
+          font-family: var(--font-retro, 'Press Start 2P'), monospace;
+          font-size: 0.52rem;
+          color: #38bdf8;
+        }
+
+        .deck-skill-name {
+          font-family: var(--font-title);
+          font-weight: 700;
+          font-size: 0.95rem;
+          color: #f8fafc;
+          letter-spacing: 0.3px;
+        }
+
+        .deck-lvl-tag {
+          font-family: var(--font-cyber, 'Chakra Petch'), monospace;
+          font-size: 0.62rem;
+          font-weight: 700;
+          color: #00f3ff;
+          background: rgba(0, 243, 255, 0.12);
+          border: 1px solid rgba(0, 243, 255, 0.35);
+          padding: 1px 5px;
+          border-radius: 3px;
+        }
+      }
+
+      .deck-bottom-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        font-family: var(--font-cyber, 'Chakra Petch'), monospace;
+        font-size: 0.68rem;
+
+        .xp-blocks {
+          color: #00f3ff;
+          letter-spacing: -0.5px;
+          font-size: 0.65rem;
+        }
+
+        .category-name {
+          color: var(--text-secondary);
+          letter-spacing: 0.5px;
+        }
+      }
+    }
+  }
+
+  /* Botões Arcade ◄ e ► */
+  .retro-arrow-btn {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 243, 255, 0.08);
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    color: #00f3ff;
+    font-size: 0.75rem;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #00f3ff;
+      color: #030712;
+      box-shadow: 0 0 10px #00f3ff;
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+/* Botão sutil para rever o Rosto */
+.btn-profile-peek {
+  margin-top: 0.6rem;
+  font-family: var(--font-cyber, 'Chakra Petch'), monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  letter-spacing: 0.6px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #00f3ff;
+    border-color: #00f3ff;
+    background: rgba(0, 243, 255, 0.06);
+  }
+}
+
+/* ==========================================================================
+   CONTEÚDO DO JOGADOR / DESENVOLVEDOR
+   ========================================================================== */
+
+.hero-content {
+  margin-bottom: 2.25rem;
+
+  .terminal-greeting {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-cyber, 'Chakra Petch'), monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+
+    .prompt-sym {
+      color: #10b981;
+      font-weight: 800;
+    }
+
+    .terminal-cursor {
+      color: #00f3ff;
+      font-weight: 800;
+      animation: cursorBlink 1s infinite step-start;
+    }
+  }
+
+  .name {
+    font-size: clamp(2.5rem, 5.2vw, 3.8rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 0.4rem;
+    background: linear-gradient(135deg, #ffffff 30%, #38bdf8 80%, #00f3ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(0, 243, 255, 0.2));
+  }
+
+  .role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0, 243, 255, 0.06);
+    border: 1px solid rgba(0, 243, 255, 0.25);
+    padding: 0.3rem 0.9rem;
+    border-radius: 4px;
+    margin-bottom: 1.25rem;
+
+    .role-class {
+      font-family: var(--font-retro, 'Press Start 2P'), monospace;
+      font-size: 0.58rem;
+      color: #38bdf8;
+    }
+
+    .role {
+      font-family: var(--font-cyber, 'Chakra Petch'), sans-serif;
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0;
+    }
+  }
+
+  .bio {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ==========================================================================
+   BOTÕES DE AÇÃO COM CANTOS CHANFRADOS RETRO-FUTURISTAS
+   ========================================================================== */
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.45rem;
+    font-family: var(--font-cyber, 'Chakra Petch'), sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    /* Cantos chanfrados estilo cibernético / mecha */
+    clip-path: polygon(7px 0%, 100% 0%, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0% 100%, 0% 7px);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn-primary {
+    background: #00f3ff;
+    color: #030712;
+    box-shadow: 0 4px 20px rgba(0, 243, 255, 0.35);
+
+    &:hover {
+      background: #38bdf8;
+      color: #030712;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 243, 255, 0.55);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  .btn-secondary {
+    background: rgba(13, 21, 38, 0.85);
+    color: var(--text-primary);
+    border: 1px solid rgba(0, 243, 255, 0.3);
+
+    &:hover {
+      border-color: #00f3ff;
+      color: #00f3ff;
+      background: rgba(0, 243, 255, 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 243, 255, 0.25);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
   }
 }
 
@@ -64,124 +526,5 @@
   50% {
     transform: scale(1.3);
     opacity: 0.6;
-  }
-}
-
-/* Avatar Monograma */
-.avatar-wrapper {
-  position: relative;
-  margin-bottom: 1.75rem;
-
-  .avatar-glow {
-    position: absolute;
-    inset: -6px;
-    border-radius: var(--radius-full);
-    background: linear-gradient(135deg, var(--accent), transparent 70%);
-    opacity: 0.7;
-    filter: blur(8px);
-  }
-
-  .avatar-box {
-    position: relative;
-    width: 110px;
-    height: 110px;
-    border-radius: var(--radius-full);
-    background: linear-gradient(135deg, var(--bg-surface), var(--bg-primary));
-    border: 2px solid var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-card);
-
-    .avatar-initials {
-      font-family: var(--font-title);
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: -1px;
-    }
-  }
-}
-
-/* Textos e Hierarquia */
-.hero-content {
-  margin-bottom: 2.5rem;
-
-  .greeting {
-    font-size: 1.05rem;
-    color: var(--accent);
-    font-weight: 500;
-    margin-bottom: 0.25rem;
-    letter-spacing: 0.5px;
-  }
-
-  .name {
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    letter-spacing: -1px;
-    background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .role {
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-    font-weight: 600;
-    color: var(--text-secondary);
-    margin-bottom: 1.25rem;
-  }
-
-  .bio {
-    font-size: 1.05rem;
-    color: var(--text-secondary);
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.7;
-  }
-}
-
-/* Botões de Ação */
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.75rem 1.4rem;
-    border-radius: var(--radius-md);
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: var(--transition);
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #050b14;
-    box-shadow: 0 4px 20px var(--accent-glow);
-
-    &:hover {
-      background: var(--accent-hover);
-      color: #050b14;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px var(--accent-glow);
-    }
-  }
-
-  .btn-secondary {
-    background: var(--bg-surface);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-
-    &:hover {
-      border-color: var(--border-hover);
-      color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-card);
-    }
   }
 }

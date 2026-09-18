@@ -6,6 +6,8 @@ export interface Experience {
   organization: string;
   period: string;
   type: ExperienceType;
+  questStage: string;
+  questBadge: string;
   description: string;
   technologies: string[];
 }

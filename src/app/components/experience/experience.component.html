@@ -1,44 +1,67 @@
 <section id="experiencia" class="experience-section">
   <div class="container">
-    <!-- Cabeçalho da Seção -->
+    <!-- Cabeçalho da Seção Aventura RPG -->
     <div class="section-header">
-      <span class="section-tag">Trajetória & Prática</span>
-      <h2 class="section-title">Jornada Técnica</h2>
+      <span class="section-tag">[ QUEST LOG // MAPA DA AVENTURA ]</span>
+      <h2 class="section-title">Jornada & Diário de Missões</h2>
       <p class="section-description">
-        Marcos práticos, participação em desafios do ecossistema de inovação e desenvolvimento contínuo de projetos modernos.
+        Registro de campanhas enfrentadas, chefões de maratonas derrotados e experiência conquistada na carreira.
       </p>
     </div>
 
-    <!-- Linha do Tempo Vertical -->
-    <div class="timeline">
-      @for (item of experiences(); track item.id) {
-        <div class="timeline-item">
-          <!-- Marcador / Ponto Conector -->
-          <div class="timeline-marker" aria-hidden="true">
-            <span class="marker-dot"></span>
+    <!-- Linha de Campanha / Timeline de Aventuras -->
+    <div class="quest-timeline">
+      @for (item of experiences(); track item.id; let idx = $index) {
+        <div class="quest-item">
+          <!-- Marcador de Fase com Ícone RPG -->
+          <div class="quest-marker" aria-hidden="true">
+            <span class="marker-icon">
+              @if (item.type === 'Hackathon') {
+                ⚔️
+              } @else if (item.type === 'Projeto') {
+                🛡️
+              } @else {
+                📜
+              }
+            </span>
           </div>
 
-          <!-- Conteúdo do Card da Timeline -->
-          <article class="timeline-card">
-            <header class="card-header">
-              <div class="title-group">
-                <span class="type-badge" [class]="'badge-' + item.type.toLowerCase()">
-                  {{ item.type }}
+          <!-- Card de Missão RPG -->
+          <article class="quest-card">
+            <!-- Cantoneiras em Pixel -->
+            <span class="card-notch notch-tl"></span>
+            <span class="card-notch notch-br"></span>
+
+            <header class="quest-card-header">
+              <div class="quest-badges-row">
+                <span class="stage-tag">{{ item.questStage }}</span>
+                <span class="status-quest-tag" [class.done]="item.questBadge === 'DUNGEON CONCLUÍDA'">
+                  {{ item.questBadge }}
                 </span>
-                <h3 class="role-title">{{ item.role }}</h3>
-                <h4 class="organization-name">{{ item.organization }}</h4>
               </div>
 
-              <time class="period-badge">{{ item.period }}</time>
+              <h3 class="quest-title">{{ item.role }}</h3>
+              <div class="quest-location-row">
+                <span class="location-icon">📍</span>
+                <h4 class="quest-guild">{{ item.organization }}</h4>
+                <time class="quest-period">[{{ item.period }}]</time>
+              </div>
             </header>
 
-            <p class="description">{{ item.description }}</p>
+            <p class="quest-narrative">{{ item.description }}</p>
 
-            <!-- Tags das Tecnologias Usadas -->
-            <div class="tech-stack">
-              @for (tech of item.technologies; track tech) {
-                <span class="tech-tag">{{ tech }}</span>
-              }
+            <!-- Loot & Equipamentos Desbloqueados -->
+            <div class="loot-container">
+              <span class="loot-header">✦ LOOT DESBLOQUEADO:</span>
+              <div class="loot-stack">
+                @for (tech of item.technologies; track tech) {
+                  <span class="loot-tag">
+                    <span class="loot-bracket">[</span>
+                    {{ tech }}
+                    <span class="loot-bracket">]</span>
+                  </span>
+                }
+              </div>
             </div>
           </article>
         </div>

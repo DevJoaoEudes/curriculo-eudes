@@ -10,33 +10,39 @@ import { Experience } from '../../models/experience.model';
   styleUrl: './experience.component.scss'
 })
 export class ExperienceComponent {
-  // Lista reativa com os marcos da trajetória técnica
+  // Marcos da Jornada Técnica modelados como Missões / Quests de Aventura RPG
   experiences = signal<Experience[]>([
     {
       id: 'proenergia-2026',
-      role: 'Participante & Desenvolvedor Full Stack',
-      organization: 'Hackathon Proenergia Summit 2026',
-      period: '2026',
+      role: 'Boss Raid: O Desafio Proenergia Summit',
+      organization: 'Arena de Inovação Energética [Ano 2026]',
+      period: 'FASE 03 // 2026',
       type: 'Hackathon',
-      description: 'Desenvolvimento intensivo de soluções inovadoras para desafios do setor energético. Criação de arquitetura frontend moderna com Angular 22, componentização reativa via Signals, e integração com lógica de backend e modelagem em banco de dados.',
+      questStage: 'FASE 03 // BOSS RAID',
+      questBadge: 'DUNGEON CONCLUÍDA',
+      description: 'Convocado para uma maratona de desenvolvimento de alta intensidade. Liderança na forja de interfaces reativas em Angular 22 com Signals, integrando feitiços de backend em Python e modelagem relacional de dados em tempo recorde.',
       technologies: ['Angular 22', 'TypeScript', 'SCSS', 'Python', 'SQL']
     },
     {
       id: 'projetos-praticos',
-      role: 'Desenvolvedor Full Stack em Formação',
-      organization: 'Projetos Práticos & Transição de Carreira',
-      period: '2025 - 2026',
+      role: 'Missão Principal: Forja de Sistemas Full Stack',
+      organization: 'Laboratório de Código Aberto [2025 - 2026]',
+      period: 'FASE 02 // 2025 - 2026',
       type: 'Projeto',
-      description: 'Construção contínua de aplicações web full stack, aprofundamento em lógica de programação, consumo e criação de APIs RESTful, POO com Python e Java, e modelagem relacional de dados com SQL.',
+      questStage: 'FASE 02 // MAIN QUEST',
+      questBadge: 'QUEST EM PROGRESSO',
+      description: 'Expedição contínua de desenvolvimento: criação de APIs RESTful com Java e Python, desvendamento de mistérios da POO e arquitetura de bancos de dados relacionais robustos com SQL.',
       technologies: ['Python', 'SQL', 'Java', 'Angular', 'Git & GitHub']
     },
     {
       id: 'formacao-continua',
-      role: 'Capacitação Contínua & Fundamentos de Software',
-      organization: 'Autodidatismo & Trilhas de Especialização',
-      period: '2024 - Presente',
+      role: 'Prólogo: Os Fundamentos da Engenharia',
+      organization: 'Academia de Autodidatas & Trilhas de Maestria',
+      period: 'FASE 01 // 2024 - Presente',
       type: 'Formação',
-      description: 'Estudo dedicado de arquitetura de software, Clean Code, versionamento semântico com Git, modularização de código e melhores práticas de acessibilidade e performance web.',
+      questStage: 'FASE 01 // TUTORIAL',
+      questBadge: 'BASE DESBLOQUEADA',
+      description: 'Início da jornada do herói: domínio das leis ancestrais de Clean Code, estruturas de dados, versionamento com Git e princípios de sistemas escaláveis para subir de nível constantemente.',
       technologies: ['Estrutura de Dados', 'Clean Code', 'Bancos Relacionais', 'Metodologias Ágeis']
     }
   ]);

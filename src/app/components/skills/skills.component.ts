@@ -1,6 +1,6 @@
 import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Skill, SkillCategory, SkillLevel } from '../../models/skill.model';
+import { Skill, SkillCategory } from '../../models/skill.model';
 
 @Component({
   selector: 'app-skills',
@@ -19,37 +19,41 @@ export class SkillsComponent {
     'DevOps & Ferramentas'
   ];
 
-  // Estado de Origem 1: Categoria atualmente selecionada (reativo com Signal)
+  // Estado: Categoria atualmente selecionada (reativo com Signal)
   selectedCategory = signal<SkillCategory | 'Todas'>('Todas');
 
-  // Estado de Origem 2: Catálogo de habilidades do Eudes
+  // Catálogo de habilidades do Eudes estilo RPG / Retro Game (níveis todos abaixo de 50)
   skills = signal<Skill[]>([
     {
       id: 'python',
       name: 'Python',
       category: 'Backend',
-      level: 'Domínio',
+      level: 'Uso Diário',
+      gameLevel: 'LVL.42',
       description: 'Scripts de automação, APIs com FastAPI/Flask e manipulação de dados.'
     },
     {
       id: 'sql',
       name: 'SQL & Modelagem',
       category: 'Dados & Banco',
-      level: 'Domínio',
+      level: 'Uso Diário',
+      gameLevel: 'LVL.48',
       description: 'Consultas avançadas, índices, triggers e modelagem relacional (PostgreSQL/MySQL).'
     },
     {
       id: 'angular',
       name: 'Angular (v17 - v22)',
       category: 'Frontend',
-      level: 'Domínio',
+      level: 'Uso Diário',
+      gameLevel: 'LVL.45',
       description: 'Standalone Components, Signals, Control Flow moderno e arquiteturas escaláveis.'
     },
     {
       id: 'typescript',
       name: 'TypeScript',
       category: 'Frontend',
-      level: 'Domínio',
+      level: 'Uso Diário',
+      gameLevel: 'LVL.40',
       description: 'Tipagem estrita, generics, interfaces e integração full stack de contratos.'
     },
     {
@@ -57,6 +61,7 @@ export class SkillsComponent {
       name: 'Java & Spring Boot',
       category: 'Backend',
       level: 'Uso Diário',
+      gameLevel: 'LVL.28',
       description: 'APIs RESTful corporativas, Spring Data JPA, Spring Security e validações.'
     },
     {
@@ -64,6 +69,7 @@ export class SkillsComponent {
       name: 'SCSS & CSS Moderno',
       category: 'Frontend',
       level: 'Uso Diário',
+      gameLevel: 'LVL.36',
       description: 'CSS Grid, Flexbox, Design Tokens, variáveis nativas e arquiteturas responsivas.'
     },
     {
@@ -71,25 +77,28 @@ export class SkillsComponent {
       name: 'PostgreSQL',
       category: 'Dados & Banco',
       level: 'Uso Diário',
+      gameLevel: 'LVL.44',
       description: 'Administração básica, otimização de queries e persistência em produção.'
     },
     {
       id: 'docker',
       name: 'Docker',
       category: 'DevOps & Ferramentas',
-      level: 'Praticando',
+      level: 'Uso Diário',
+      gameLevel: 'LVL.32',
       description: 'Containerização de aplicações frontend e backend, docker-compose e deploys.'
     },
     {
       id: 'git',
       name: 'Git & GitHub',
       category: 'DevOps & Ferramentas',
-      level: 'Domínio',
+      level: 'Uso Diário',
+      gameLevel: 'LVL.39',
       description: 'Gitflow, versionamento semântico, conventional commits e code review.'
     }
   ]);
 
-  // Estado Derivado: computed() recalcula automaticamente quando selectedCategory ou skills mudar!
+  // Estado Derivado: computed()
   filteredSkills = computed(() => {
     const category = this.selectedCategory();
     const list = this.skills();
@@ -101,7 +110,7 @@ export class SkillsComponent {
     return list.filter(skill => skill.category === category);
   });
 
-  // Ação de interação do usuário disparada pelo template
+  // Ação de interação do usuário
   setCategory(category: SkillCategory | 'Todas'): void {
     this.selectedCategory.set(category);
   }

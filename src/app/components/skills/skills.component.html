@@ -1,15 +1,15 @@
 <section id="skills" class="skills-section">
   <div class="container">
-    <!-- Cabeçalho da Seção -->
+    <!-- Cabeçalho da Seção Retro Game -->
     <div class="section-header">
-      <span class="section-tag">Stack & Ferramentas</span>
+      <span class="section-tag">[ INVENTÁRIO // SKILL_TREE ]</span>
       <h2 class="section-title">Habilidades Técnicas</h2>
       <p class="section-description">
-        Foco em desenvolvimento Full Stack de alta performance, aliando robustez no backend à experiência fluida e moderna no frontend.
+        Matriz de habilidades e tecnologias desbloqueadas na jornada, aliando robustez no backend à experiência moderna no frontend.
       </p>
     </div>
 
-    <!-- Filtro Interativo por Categorias -->
+    <!-- Filtro Interativo por Categorias Arcade -->
     <div class="filters-container" role="toolbar" aria-label="Filtros de habilidades">
       @for (cat of categories; track cat) {
         <button
@@ -18,28 +18,31 @@
           [class.active]="selectedCategory() === cat"
           [attr.aria-pressed]="selectedCategory() === cat"
           (click)="setCategory(cat)">
-          {{ cat }}
+          <span class="btn-bracket">[</span>
+          <span class="btn-name">{{ cat }}</span>
+          <span class="btn-bracket">]</span>
         </button>
       }
     </div>
 
-    <!-- Grid de Habilidades Filtradas -->
+    <!-- Grid de Habilidades Filtradas (Cards Estilo Jogo Retro) -->
     <div class="skills-grid">
       @for (skill of filteredSkills(); track skill.id) {
         <article class="skill-card">
+          <!-- Cantoneiras em pixel no card -->
+          <span class="card-notch notch-tl"></span>
+          <span class="card-notch notch-br"></span>
+
           <div class="card-header">
             <h3 class="skill-name">{{ skill.name }}</h3>
-            <!-- Badge Qualitativa de Proficiência -->
-            <span 
-              class="level-badge"
-              [class.badge-expert]="skill.level === 'Domínio'"
-              [class.badge-daily]="skill.level === 'Uso Diário'"
-              [class.badge-learning]="skill.level === 'Praticando'">
-              {{ skill.level }}
-            </span>
+            <!-- Badge de Nível de Jogo Retro (Sempre abaixo de 50) -->
+            <span class="retro-lvl-badge">{{ skill.gameLevel }}</span>
           </div>
 
-          <span class="skill-category">{{ skill.category }}</span>
+          <div class="card-sub-row">
+            <span class="skill-class-tag">CLASS: {{ skill.category.toUpperCase() }}</span>
+            <span class="skill-status-tag">ACTIVE</span>
+          </div>
 
           @if (skill.description) {
             <p class="skill-description">{{ skill.description }}</p>
@@ -47,7 +50,7 @@
         </article>
       } @empty {
         <div class="empty-state">
-          <p>Nenhuma habilidade encontrada para a categoria selecionada.</p>
+          <p>[!] Nenhuma habilidade encontrada para o filtro selecionado.</p>
         </div>
       }
     </div>

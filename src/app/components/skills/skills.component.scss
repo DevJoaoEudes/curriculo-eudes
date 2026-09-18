@@ -3,22 +3,24 @@
   position: relative;
 }
 
-/* Cabeçalho da Seção */
+/* Cabeçalho da Seção Retro Game */
 .section-header {
   text-align: center;
-  max-width: 650px;
+  max-width: 680px;
   margin: 0 auto 3rem;
 
   .section-tag {
     display: inline-block;
     padding: 0.35rem 0.85rem;
-    background: var(--accent-badge-bg);
-    color: var(--accent);
-    font-size: 0.85rem;
-    font-weight: 600;
-    border-radius: var(--radius-full);
-    margin-bottom: 0.75rem;
-    letter-spacing: 0.5px;
+    background: rgba(0, 243, 255, 0.08);
+    color: #00f3ff;
+    border: 1px solid rgba(0, 243, 255, 0.35);
+    font-family: var(--font-retro, 'Press Start 2P'), monospace;
+    font-size: 0.68rem;
+    border-radius: 4px;
+    margin-bottom: 0.9rem;
+    letter-spacing: 0.8px;
+    box-shadow: 0 0 12px rgba(0, 243, 255, 0.12);
   }
 
   .section-title {
@@ -26,9 +28,10 @@
     font-weight: 800;
     margin-bottom: 0.75rem;
     letter-spacing: -0.5px;
-    background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
+    background: linear-gradient(135deg, #ffffff 40%, #38bdf8 80%, #00f3ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(0, 243, 255, 0.15));
   }
 
   .section-description {
@@ -38,37 +41,51 @@
   }
 }
 
-/* Barra de Filtros */
+/* Barra de Filtros Estilo Arcade */
 .filters-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.65rem;
   margin-bottom: 3rem;
 
   .filter-btn {
-    background: var(--bg-surface);
+    background: rgba(11, 17, 30, 0.85);
     color: var(--text-secondary);
-    border: 1px solid var(--border-color);
-    padding: 0.6rem 1.25rem;
-    border-radius: var(--radius-full);
-    font-size: 0.9rem;
-    font-weight: 500;
+    border: 1px solid rgba(0, 243, 255, 0.25);
+    padding: 0.55rem 1.1rem;
+    border-radius: 4px;
+    font-family: var(--font-cyber, 'Chakra Petch'), sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    .btn-bracket {
+      color: rgba(0, 243, 255, 0.4);
+      font-size: 0.78rem;
+    }
 
     &:hover {
-      background: var(--bg-surface-hover);
-      color: var(--text-primary);
-      border-color: var(--border-hover);
+      color: #00f3ff;
+      border-color: rgba(0, 243, 255, 0.6);
+      background: rgba(0, 243, 255, 0.08);
+      transform: translateY(-2px);
     }
 
     &.active {
-      background: var(--accent);
-      color: #050b14;
-      border-color: var(--accent);
-      font-weight: 600;
-      box-shadow: 0 4px 15px var(--accent-glow);
+      background: #00f3ff;
+      color: #030712;
+      border-color: #00f3ff;
+      box-shadow: 0 0 16px rgba(0, 243, 255, 0.4);
+
+      .btn-bracket {
+        color: #030712;
+        font-weight: 800;
+      }
     }
   }
 }
@@ -81,18 +98,44 @@
 }
 
 .skill-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1.5rem;
+  position: relative;
+  background: rgba(13, 21, 38, 0.85);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  box-shadow: 
+    4px 4px 0px rgba(0, 243, 255, 0.12),
+    0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  padding: 1.4rem;
   display: flex;
   flex-direction: column;
-  transition: var(--transition);
+  backdrop-filter: blur(8px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Cantoneiras Pixeladas */
+  .card-notch {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #00f3ff;
+    pointer-events: none;
+  }
+
+  .notch-tl {
+    top: 0;
+    left: 0;
+  }
+
+  .notch-br {
+    bottom: 0;
+    right: 0;
+  }
 
   &:hover {
-    transform: translateY(-4px);
-    border-color: var(--border-hover);
-    box-shadow: var(--shadow-card);
+    transform: translate(-3px, -3px);
+    border-color: #00f3ff;
+    box-shadow: 
+      7px 7px 0px rgba(0, 243, 255, 0.25),
+      0 0 20px rgba(0, 243, 255, 0.2);
   }
 
   .card-header {
@@ -100,58 +143,57 @@
     justify-content: space-between;
     align-items: center;
     gap: 0.75rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
 
     .skill-name {
-      font-size: 1.2rem;
+      font-family: var(--font-title);
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--text-primary);
       margin: 0;
     }
   }
 
-  .skill-category {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+  /* Badge de Nível de Jogo Retro */
+  .retro-lvl-badge {
+    font-family: var(--font-retro, 'Press Start 2P'), monospace;
+    font-size: 0.62rem;
+    color: #00f3ff;
+    background: rgba(0, 243, 255, 0.12);
+    border: 1px solid rgba(0, 243, 255, 0.4);
+    padding: 3px 7px;
+    border-radius: 3px;
+    white-space: nowrap;
+    box-shadow: 0 0 8px rgba(0, 243, 255, 0.2);
+  }
+
+  .card-sub-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-cyber, 'Chakra Petch'), monospace;
     margin-bottom: 0.75rem;
+    font-size: 0.72rem;
+
+    .skill-class-tag {
+      color: #38bdf8;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .skill-status-tag {
+      color: #10b981;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+    }
   }
 
   .skill-description {
     font-size: 0.9rem;
     color: var(--text-secondary);
-    line-height: 1.5;
+    line-height: 1.55;
     margin: 0;
     flex-grow: 1;
-  }
-}
-
-/* Badges Qualitativas */
-.level-badge {
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-full);
-  white-space: nowrap;
-
-  &.badge-expert {
-    background: rgba(16, 185, 129, 0.15);
-    color: #10b981;
-    border: 1px solid rgba(16, 185, 129, 0.3);
-  }
-
-  &.badge-daily {
-    background: var(--accent-badge-bg);
-    color: var(--accent);
-    border: 1px solid var(--accent-glow);
-  }
-
-  &.badge-learning {
-    background: rgba(245, 158, 11, 0.15);
-    color: #f59e0b;
-    border: 1px solid rgba(245, 158, 11, 0.3);
   }
 }
 
@@ -160,8 +202,9 @@
   grid-column: 1 / -1;
   text-align: center;
   padding: 3rem;
-  background: var(--bg-surface);
-  border: 1px dashed var(--border-color);
-  border-radius: var(--radius-md);
+  background: rgba(11, 17, 30, 0.8);
+  border: 1px dashed rgba(0, 243, 255, 0.3);
+  border-radius: 6px;
+  font-family: var(--font-cyber, 'Chakra Petch'), monospace;
   color: var(--text-muted);
 }
